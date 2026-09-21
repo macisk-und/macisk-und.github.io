@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="电影购物狂 - 汇聚全球经典电影与独家周边商品的精选平台，提供正版影视资源、电影周边购物指南及影视衍生品收藏资讯。">
+    <meta name="keywords" content="电影购物狂,电影周边,影视周边,电影商品,正版电影,影视收藏">
+    <title>电影购物狂 - 正版电影周边与影视收藏指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #e50914;
+            --primary-hover: #b20710;
+            --secondary-color: #221f1f;
+            --bg-color: #141414;
+            --card-bg: #1f1f1f;
+            --text-main: #ffffff;
+            --text-muted: #b3b3b3;
+            --spacing-unit: 16px;
+            --border-radius: 8px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            padding-left: 10px;
+            border-left: 4px solid var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .section-title a {
+            font-size: 14px;
+            color: var(--text-muted);
+            font-weight: normal;
+        }
+
+        .section-title a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Header */
+        header {
+            background-color: rgba(0, 0, 0, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #333;
+            padding: 15px 0;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            font-size: 15px;
+            color: var(--text-muted);
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--text-main);
+        }
+
+        .search-box {
+            display: flex;
+            background: #333;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .search-box input {
+            border: none;
+            padding: 8px 12px;
+            background: transparent;
+            color: white;
+            width: 200px;
+        }
+
+        .search-box button {
+            background: var(--primary-color);
+            border: none;
+            padding: 0 15px;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 400px;
+            background: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.4)), url('https://picsum.photos/seed/cinema/1200/600') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            font-size: 16px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 24px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .btn-outline {
+            border: 1px solid white;
+            color: white;
+            margin-left: 10px;
+        }
+
+        .btn-outline:hover {
+            background-color: white;
+            color: black;
+        }
+
+        /* Categories */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .category-card {
+            background-color: var(--card-bg);
+            padding: 20px;
+            text-align: center;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            background-color: #333;
+        }
+
+        .category-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .category-name {
+            font-weight: 500;
+        }
+
+        /* Movie & Product Grid */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .movie-card {
+            display: flex;
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            margin-bottom: 20px;
+            transition: var(--transition);
+        }
+
+        .movie-card:hover {
+            transform: scale(1.01);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        .movie-poster {
+            width: 160px;
+            height: 240px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .movie-info {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .movie-meta {
+            display: flex;
+            gap: 10px;
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .tag {
+            background: #333;
+            padding: 2px 6px;
+            border-radius: 2px;
+        }
+
+        .tag.hot {
+            background: #b20710;
+            color: white;
+        }
+
+        .movie-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .movie-desc {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .movie-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #333;
+            padding-top: 15px;
+        }
+
+        .price-tag {
+            color: #46d369;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        /* Sidebar */
+        .sidebar-section {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+        }
+
+        .rank-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #333;
+            display: flex;
+            align-items: center;
+        }
+
+        .rank-number {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--text-muted);
+            width: 30px;
+            text-align: center;
+        }
+
+        .rank-number.top-3 {
+            color: #ffd700;
+        }
+
+        .rank-info h4 {
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .rank-info span {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background-color: var(--card-bg);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            margin-bottom: 50px;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            margin-bottom: 8px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .faq-answer {
+            color: var(--text-muted);
+            font-size: 14px;
+            padding-left: 20px;
+            border-left: 2px solid #333;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            padding: 50px 0 20px;
+            margin-top: 50px;
+            border-top: 1px solid #333;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            color: #666;
+            font-size: 13px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container header-inner">
+        <a href="#" class="logo">电影<span>购物狂</span></a>
+        <nav>
+            <ul>
+                <li><a href="#" class="active">首页</a></li>
+                <li><a href="#">正版电影</a></li>
+                <li><a href="#">周边商城</a></li>
+                <li><a href="#">收藏指南</a></li>
+                <li><a href="#">社区论坛</a></li>
+            </ul>
+        </nav>
+        <div class="search-box">
+            <input type="text" placeholder="搜索电影或商品...">
+            <button>搜索</button>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>不仅是电影，更是生活态度</h1>
+            <p>汇聚全球经典影片与限量版影视周边，为您打造沉浸式影迷购物体验。正版保障，收藏首选。</p>
+            <div>
+                <a href="#" class="btn btn-primary">浏览商城</a>
+                <a href="#" class="btn btn-outline">查看榜单</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section>
+        <div class="categories-grid">
+            <div class="category-card">
+                <span class="category-icon">🎬</span>
+                <div class="category-name">正版电影</div>
+            </div>
+            <div class="category-card">
+                <span class="category-icon">👕</span>
+                <div class="category-name">影视服饰</div>
+            </div>
+            <div class="category-card">
+                <span class="category-icon">🎮</span>
+                <div class="category-name">游戏周边</div>
+            </div>
+            <div class="category-card">
+                <span class="category-icon">🧸</span>
+                <div class="category-name">手办模型</div>
+            </div>
+            <div class="category-card">
+                <span class="category-icon">📖</span>
+                <div class="category-name">剧本与书籍</div>
+            </div>
+            <div class="category-card">
+                <span class="category-icon">🎧</span>
+                <div class="category-name">音乐原声</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Area -->
+    <div class="content-grid">
+        <!-- Left Column: Movie & Product List -->
+        <main>
+            <div class="section-title">
+                <span>热门推荐</span>
+                <a href="#">查看更多 ></a>
+            </div>
+
+            <article class="movie-card">
+                <img src="https://picsum.photos/seed/movie1/160/240" alt="星际穿越 海报" class="movie-poster">
+                <div class="movie-info">
+                    <div>
+                        <div class="movie-meta">
+                            <span class="tag">科幻</span>
+                            <span class="tag">冒险</span>
+                            <span class="tag">热映</span>
+                        </div>
+                        <h2 class="movie-title">星际穿越：终极收藏版</h2>
+                        <p class="movie-desc">包含4K高清蓝光碟、独家导演剪辑片段、电影原声CD以及带有科学顾问注释的限量版剧本。探索宇宙的奥秘，感受父爱的伟大。</p>
+                    </div>
+                    <div class="movie-footer">
+                        <div class="price-tag">¥ 599.00</div>
+                        <button class="btn btn-primary" style="padding: 8px 20px; font-size: 14px;">立即购买</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="movie-card">
+                <img src="https://picsum.photos/seed/movie2/160/240" alt="教父 海报" class="movie-poster">
+                <div class="movie-info">
+                    <div>
+                        <div class="movie-meta">
+                            <span class="tag">经典</span>
+                            <span class="tag">剧情</span>
+                            <span class="tag">热销</span>
+                        </div>
+                        <h2 class="movie-title">教父：家族史诗典藏</h2>
+                        <p class="movie-desc">柯里昂家族的传奇故事。本套装包含三部曲4K修复版、同名小说精装版以及经典的黑色风衣配饰（可选）。</p>
+                    </div>
+                    <div class="movie-footer">
+                        <div class="price-tag">¥ 899.00</div>
+                        <button class="btn btn-primary" style="padding: 8px 20px; font-size: 14px;">立即购买</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="movie-card">
+                <img src="https://picsum.photos/seed/movie3/160/240" alt="千与千寻 海报" class="movie-poster">
+                <div class="movie-info">
+                    <div>
+                        <div class="movie-meta">
+                            <span class="tag">动画</span>
+                            <span class="tag">宫崎骏</span>
+                            <span class="tag">限量</span>
+                        </div>
+                        <h2 class="movie-title">千与千寻：吉卜力工作室纪念套装</h2>
+                        <p class="movie-desc">宫崎骏大师的代表作，包含高清蓝光碟、精美插画集以及千寻角色的立体手办模型。</p>
+                    </div>
+                    <div class="movie-footer">
+                        <div class="price-tag">¥ 429.00</div>
+                        <button class="btn btn-primary" style="padding: 8px 20px; font-size: 14px;">立即购买</button>
+                    </div>
+                </div>
+            </article>
+        </main>
+
+        <!-- Right Column: Sidebar -->
+        <aside>
+            <div class="sidebar-section">
+                <div class="section-title">
+                    <span>排行榜</span>
+                </div>
+                <ul class="rank-list">
+                    <li>
+                        <span class="rank-number top-3">1</span>
+                        <div class="rank-info">
+                            <h4>复仇者联盟4 终局之战</h4>
+                            <span>周边商品</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="rank-number top-3">2</span>
+                        <div class="rank-info">
+                            <h4>哈利波特：魔法石</h4>
+                            <span>正版电影</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="rank-number top-3">3</span>
+                        <div class="rank-info">
+                            <h4>银翼杀手2049</h4>
+                            <span>收藏周边</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="rank-number">4</span>
+                        <div class="rank-info">
+                            <h4>爱乐之城</h4>
+                            <span>原声唱片</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="rank-number">5</span>
+                        <div class="rank-info">
+                            <h4>指环王：护戒使者</h4>
+                            <span>限量版道具</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="section-title">
+                    <span>限时特惠</span>
+                </div>
+                <div style="text-align: center; padding: 20px 0;">
+                    <img src="https://picsum.photos/seed/promo/220/150" alt="促销海报" style="width: 100%; border-radius: 4px; margin-bottom: 10px;">
+                    <h4 style="font-size: 16px; margin-bottom: 5px;">影迷节狂欢</h4>
+                    <p style="color: #46d369; font-size: 14px;">全场周边满800减100</p>
+                    <a href="#" style="display: inline-block; margin-top: 10px; font-size: 14px; color: var(--primary-color);">查看详情 ></a>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="section-title">
+            <span>常见问题解答</span>
+        </div>
+        <div class="faq-list">
+            <div class="faq-item">
+                <div class="faq-question">购买的电影资源是正版吗？<span>+</span></div>
+                <div class="faq-answer">是的，我们与全球各大发行商合作，所有上架的电影、游戏和周边商品均保证为正版渠道引进，支持正版，支持创作者。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">周边商品支持全球发货吗？<span>+</span></div>
+                <div class="faq-answer">目前我们主要面向国内用户，提供国内主流物流服务。部分特殊进口商品可能需要额外时间，具体请在结算页面查看运费说明。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">如果商品有质量问题怎么办？<span>+</span></div>
+                <div class="faq-answer">我们提供7天无理由退换货服务。若发现商品破损或错发，请联系客服，我们将为您安排补发或退款。</div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <a href="#" class="logo" style="display: block; margin-bottom: 15px;">电影<span>购物狂</span></a>
+                <p style="color: var(--text-muted); font-size: 14px; line-height: 1.8;">
+                    致力于为影迷和收藏家提供最优质的影视内容与周边商品。连接电影与生活，让每一次观看都充满仪式感。
+                </p>
+            </div>
+            <div class="footer-col">
+                <h4>购物指南</h4>
+                <ul>
+                    <li><a href="#">如何购买</a></li>
+                    <li><a href="#">支付方式</a></li>
+                    <li><a href="#">配送说明</a></li>
+                    <li><a href="#">退换货政策</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>关于我们</h4>
+                <ul>
+                    <li><a href="#">品牌故事</a></li>
+                    <li><a href="#">加入我们</a></li>
+                    <li><a href="#">联系方式</a></li>
+                    <li><a href="#">隐私条款</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>关注我们</h4>
+                <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 10px;">
+                    订阅我们的邮件列表，获取最新电影资讯与独家优惠。
+                </p>
+                <div style="display: flex; gap: 10px;">
+                    <input type="email" placeholder="您的邮箱" style="padding: 8px; border-radius: 4px; border: none; width: 100%;">
+                    <button style="padding: 8px 15px; background: var(--primary-color); border: none; color: white; border-radius: 4px; cursor: pointer;">订阅</button>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 电影购物狂 版权所有. 本站所有内容仅供展示与交流，不用于商业盈利。
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
