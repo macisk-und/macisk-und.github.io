@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新电影在线观看 - 最新热映影视资源与高清观影指南</title>
+    <meta name="description" content="提供最新新电影在线观看服务，收录近期热映大片、高分佳作及经典老片。支持高清流畅播放，包含详细剧情简介、演员阵容及观影指南，满足用户寻找高质量影视资源的搜索需求。">
+    <meta name="keywords" content="新电影在线观看,最新电影,高清电影,在线影视,电影资源">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #e50914; /* 类似 Netflix 红 */
+            --secondary-color: #221f1f;
+            --accent-color: #f5c518;
+            --text-main: #333333;
+            --text-secondary: #666666;
+            --bg-body: #f4f4f4;
+            --bg-card: #ffffff;
+            --spacing-unit: 16px;
+            --border-radius: 8px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: rgba(0, 0, 0, 0.95);
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: white;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 5px 0;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .search-box {
+            display: flex;
+            background: #333;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .search-box input {
+            border: none;
+            padding: 8px 12px;
+            outline: none;
+            color: white;
+            background: #333;
+        }
+
+        .search-box button {
+            border: none;
+            background: var(--primary-color);
+            color: white;
+            padding: 0 15px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .search-box button:hover {
+            background: #b20710;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://picsum.photos/seed/cinema/1920/600') no-repeat center center/cover;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 var(--spacing-unit);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #ddd;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(229, 9, 20, 0.4);
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-2px);
+            background-color: #b20710;
+        }
+
+        /* Main Content */
+        main {
+            flex: 1;
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 40px var(--spacing-unit);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            border-left: 5px solid var(--primary-color);
+            padding-left: 15px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .filter-tags {
+            display: flex;
+            gap: 10px;
+        }
+
+        .tag {
+            background: #e0e0e0;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .tag:hover, .tag.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Movie Grid */
+        .movie-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .movie-card {
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: relative;
+        }
+
+        .movie-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        .poster-wrapper {
+            position: relative;
+            padding-top: 140%; /* 5:7 Aspect Ratio */
+            overflow: hidden;
+        }
+
+        .poster-wrapper img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .movie-card:hover .poster-wrapper img {
+            transform: scale(1.05);
+        }
+
+        .rating-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.8);
+            color: var(--accent-color);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .card-content {
+            padding: 15px;
+        }
+
+        .movie-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .movie-meta {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .quality-tag {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .play-btn-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .movie-card:hover .play-btn-overlay {
+            opacity: 1;
+        }
+
+        .play-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .play-icon::after {
+            content: '';
+            border-style: solid;
+            border-width: 10px 0 10px 18px;
+            border-color: transparent transparent transparent white;
+            margin-left: 4px;
+        }
+
+        /* Info Section */
+        .info-section {
+            background: white;
+            padding: 40px;
+            border-radius: var(--border-radius);
+            margin-bottom: 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+        }
+
+        .info-poster img {
+            width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .info-content h2 {
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        .info-tags span {
+            display: inline-block;
+            background: #f0f0f0;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+        }
+
+        .info-desc {
+            margin: 20px 0;
+            color: var(--text-secondary);
+            text-align: justify;
+        }
+
+        .info-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: var(--transition);
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #b20710;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #ccc;
+            color: var(--text-main);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            margin-bottom: 15px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            background: #fff;
+            transition: background 0.2s;
+        }
+
+        .faq-question:hover {
+            background: #f9f9f9;
+        }
+
+        .faq-answer {
+            padding: 0 20px 20px;
+            color: var(--text-secondary);
+            display: none;
+            border-top: 1px solid #eee;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question {
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary-color);
+            color: #888;
+            padding: 50px 0 20px;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .header-container { padding: 0 10px; }
+            nav { display: none; } /* Simplified mobile nav for demo */
+            .info-grid { grid-template-columns: 1fr; }
+            .search-box { display: none; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">影界<span>在线</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#">最新上映</a></li>
+                    <li><a href="#">高分榜单</a></li>
+                    <li><a href="#">电视剧集</a></li>
+                    <li><a href="#">综艺娱乐</a></li>
+                </ul>
+            </nav>
+            <div class="search-box">
+                <input type="text" placeholder="搜索电影、演员...">
+                <button>搜索</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>探索无限精彩，新电影在线观看</h1>
+            <p>收录全球最新院线上映影片与独家流媒体资源，提供高清流畅的观影体验。</p>
+            <a href="#latest" class="hero-btn">立即开始观看</a>
+        </div>
+    </section>
+
+    <main>
+        <!-- Latest Movies Section -->
+        <section id="latest">
+            <div class="section-header">
+                <h2 class="section-title">最新上映</h2>
+                <div class="filter-tags">
+                    <span class="tag active">全部</span>
+                    <span class="tag">动作</span>
+                    <span class="tag">科幻</span>
+                    <span class="tag">剧情</span>
+                    <span class="tag">悬疑</span>
+                </div>
+            </div>
+
+            <div class="movie-grid">
+                <!-- Movie Card 1 -->
+                <article class="movie-card">
+                    <div class="poster-wrapper">
+                        <span class="rating-badge">9.2</span>
+                        <img src="https://picsum.photos/seed/movie1/300/420" alt="星际穿越海报">
+                        <div class="play-btn-overlay">
+                            <div class="play-icon"></div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="movie-title">星际穿越：重启</h3>
+                        <div class="movie-meta">
+                            <span>2023</span>
+                            <span class="quality-tag">HD</span>
+                        </div>
+                        <p style="font-size: 0.8rem; color: #999;">科幻 / 冒险 / 悬疑</p>
+                    </div>
+                </article>
+
+                <!-- Movie Card 2 -->
+                <article class="movie-card">
+                    <div class="poster-wrapper">
+                        <span class="rating-badge">8.8</span>
+                        <img src="https://picsum.photos/seed/movie2/300/420" alt="午夜侦探海报">
+                        <div class="play-btn-overlay">
+                            <div class="play-icon"></div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="movie-title">午夜侦探</h3>
+                        <div class="movie-meta">
+                            <span>2023</span>
+                            <span class="quality-tag">4K</span>
+                        </div>
+                        <p style="font-size: 0.8rem; color: #999;">悬疑 / 犯罪 / 剧情</p>
+                    </div>
+                </article>
+
+                <!-- Movie Card 3 -->
+                <article class="movie-card">
+                    <div class="poster-wrapper">
+                        <span class="rating-badge">7.5</span>
+                        <img src="https://picsum.photos/seed/movie3/300/420" alt="夏日微风海报">
+                        <div class="play-btn-overlay">
+                            <div class="play-icon"></div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="movie-title">夏日微风</h3>
+                        <div class="movie-meta">
+                            <span>2022</span>
+                            <span class="quality-tag">HD</span>
+                        </div>
+                        <p style="font-size: 0.8rem; color: #999;">爱情 / 喜剧 / 生活</p>
+                    </div>
+                </article>
+
+                <!-- Movie Card 4 -->
+                <article class="movie-card">
+                    <div class="poster-wrapper">
+                        <span class="rating-badge">9.0</span>
+                        <img src="https://picsum.photos/seed/movie4/300/420" alt="赛博朋克：边缘行者海报">
+                        <div class="play-btn-overlay">
+                            <div class="play-icon"></div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="movie-title">赛博朋克：边缘行者</h3>
+                        <div class="movie-meta">
+                            <span>2023</span>
+                            <span class="quality-tag">1080P</span>
+                        </div>
+                        <p style="font-size: 0.8rem; color: #999;">动画 / 动作 / 科幻</p>
+                    </div>
+                </article>
+
+                <!-- Movie Card 5 -->
+                <article class="movie-card">
+                    <div class="poster-wrapper">
+                        <span class="rating-badge">8.1</span>
+                        <img src="https://picsum.photos/seed/movie5/300/420" alt="深海迷航海报">
+                        <div class="play-btn-overlay">
+                            <div class="play-icon"></div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="movie-title">深海迷航</h3>
+                        <div class="movie-meta">
+                            <span>2023</span>
+                            <span class="quality-tag">HD</span>
+                        </div>
+                        <p style="font-size: 0.8rem; color: #999;">恐怖 / 惊悚</p>
+                    </div>
+                </article>
+
+                <!-- Movie Card 6 -->
+                <article class="movie-card">
+                    <div class="poster-wrapper">
+                        <span class="rating-badge">7.9</span>
+                        <img src="https://picsum.photos/seed/movie6/300/420" alt="时光列车海报">
+                        <div class="play-btn-overlay">
+                            <div class="play-icon"></div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="movie-title">时光列车</h3>
+                        <div class="movie-meta">
+                            <span>2022</span>
+                            <span class="quality-tag">4K</span>
+                        </div>
+                        <p style="font-size: 0.8rem; color: #999;">科幻 / 奇幻</p>
+                    </div>
+                </article>
+
+                 <!-- Movie Card 7 -->
+                 <article class="movie-card">
+                    <div class="poster-wrapper">
+                        <span class="rating-badge">8.5</span>
+                        <img src="https://picsum.photos/seed/movie7/300/420" alt="城市猎人海报">
+                        <div class="play-btn-overlay">
+                            <div class="play-icon"></div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="movie-title">城市猎人：觉醒</h3>
+                        <div class="movie-meta">
+                            <span>2023</span>
+                            <span class="quality-tag">HD</span>
+                        </div>
+                        <p style="font-size: 0.8rem; color: #999;">动作 / 冒险</p>
+                    </div>
+                </article>
+
+                 <!-- Movie Card 8 -->
+                 <article class="movie-card">
+                    <div class="poster-wrapper">
+                        <span class="rating-badge">9.5</span>
+                        <img src="https://picsum.photos/seed/movie8/300/420" alt="永恒之火海报">
+                        <div class="play-btn-overlay">
+                            <div class="play-icon"></div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="movie-title">永恒之火</h3>
+                        <div class="movie-meta">
+                            <span>2023</span>
+                            <span class="quality-tag">4K</span>
+                        </div>
+                        <p style="font-size: 0.8rem; color: #999;">历史 / 剧情</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Featured Info Section -->
+        <section class="info-section">
+            <div class="info-grid">
+                <div class="info-poster">
+                    <img src="https://picsum.photos/seed/movie1/400/600" alt="星际穿越：重启剧照">
+                </div>
+                <div class="info-content">
+                    <h2>星际穿越：重启</h2>
+                    <div class="info-tags">
+                        <span>科幻</span>
+                        <span>冒险</span>
+                        <span>2023</span>
+                        <span>2小时15分</span>
+                    </div>
+                    <p style="font-size: 0.9rem; color: #666; margin-top: 5px;">导演：克里斯托弗·诺兰 / 演员阵容：马修·麦康纳, 安妮·海瑟薇</p>
+                    <div class="info-desc">
+                        <p><strong>剧情简介：</strong>在不久的将来，地球环境急剧恶化，农作物枯萎，沙尘暴肆虐。为了人类的未来，一队探险家利用新发现的虫洞，超越人类太空旅行的极限，在浩瀚宇宙中寻找适合人类居住的新家园。这是一场关于爱、时间与生存的宏大史诗，探讨了人类在绝境中不屈的意志与对未知的探索精神。</p>
+                    </div>
+                    <div class="info-actions">
+                        <button class="btn btn-primary">立即播放</button>
+                        <button class="btn btn-outline">加入片单</button>
+                        <button class="btn btn-outline">分享</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-container">
+            <div class="section-header" style="border-left-color: #333;">
+                <h2 class="section-title">常见问题解答</h2>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">观看新电影需要付费吗？</div>
+                <div class="faq-answer">本站提供部分免费高清资源，部分独家新上映电影可能需要会员权限或积分兑换。</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">支持哪些播放设备？</div>
+                <div class="faq-answer">支持电脑端浏览器直接播放，也兼容手机、平板等移动设备，随时随地享受高清观影。</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">画质清晰度如何？</div>
+                <div class="faq-answer">我们提供从标清(HD)、高清(1080P)到超高清(4K)的多档位画质选择，请根据您的网络环境选择。</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">如何更新最新电影列表？</div>
+                <div class="faq-answer">网站每日自动抓取各大影院排片信息，确保第一时间为您提供最新上线的影视资源。</div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>关于影界在线</h4>
+                <p style="font-size: 0.9rem; line-height: 1.8;">致力于为影迷提供最便捷、最丰富的新电影在线观看平台。汇集全球最新大片，打造极致视听体验。</p>
+            </div>
+            <div class="footer-col">
+                <h4>快速链接</h4>
+                <ul>
+                    <li><a href="#">首页</a></li>
+                    <li><a href="#">最新上映</a></li>
+                    <li><a href="#">高分榜单</a></li>
+                    <li><a href="#">帮助中心</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>热门分类</h4>
+                <ul>
+                    <li><a href="#">科幻电影</a></li>
+                    <li><a href="#">动作大片</a></li>
+                    <li><a href="#">爱情喜剧</a></li>
+                    <li><a href="#">经典老片</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>联系我们</h4>
+                <ul>
+                    <li>客服邮箱：support@yingjie.com</li>
+                    <li>商务合作：bd@yingjie.com</li>
+                    <li>用户协议</li>
+                    <li>隐私政策</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 影界在线. All Rights Reserved. 本站资源仅供学习交流，请勿用于商业用途。</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple FAQ Accordion Logic
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', event => {
+                const parent = item.parentElement;
+                parent.classList.toggle('active');
+            });
+        });
+
+        // Simple Search Interaction
+        const searchBtn = document.querySelector('.search-box button');
+        const searchInput = document.querySelector('.search-box input');
+        
+        searchBtn.addEventListener('click', () => {
+            if(searchInput.value.trim()) {
+                alert('正在搜索：' + searchInput.value);
+                // In a real app, this would redirect to search results
+            }
+        });
+
+        searchInput.addEventListener('keypress', (e) => {
+            if(e.key === 'Enter') {
+                searchBtn.click();
+            }
+        });
+    </script>
+</body>
+  </html>
