@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>暗影猎手-暗夜行动指南与装备图鉴</title>
+    <meta name="description" content="暗影猎手官方网站提供暗夜行动指南、武器装备图鉴、技能加点攻略及最新副本攻略，助您在阴影中高效狩猎。">
+    <meta name="keywords" content="暗影猎手, 暗夜狩猎, 游戏攻略, 装备图鉴, 副本攻略">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #6b2c91;
+            --secondary-color: #2a0e3b;
+            --accent-color: #00d2ff;
+            --text-light: #e0e0e0;
+            --text-dim: #a0a0a0;
+            --bg-dark: #0f0f13;
+            --bg-card: #1a1a24;
+            --border-radius: 8px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Layout Utilities */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-padding {
+            padding: 60px 0;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: rgba(15, 15, 19, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--text-light);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-dim);
+            position: relative;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--accent-color);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(15, 15, 19, 0.7), rgba(15, 15, 19, 0.9)), url('https://picsum.photos/seed/darkness/1920/1080') center/cover no-repeat;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            z-index: 2;
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(0, 210, 255, 0.5);
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            margin-bottom: 40px;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 12px 35px;
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            color: #fff;
+            font-weight: 600;
+            border-radius: 30px;
+            box-shadow: 0 5px 15px rgba(107, 44, 145, 0.4);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 210, 255, 0.6);
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            background-color: var(--secondary-color);
+            padding: 30px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-bottom: 5px;
+        }
+
+        .stat-item p {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+        }
+
+        /* Guide Section */
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+
+        .section-title .divider {
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-color);
+            margin: 0 auto;
+        }
+
+        .guide-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .guide-card {
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .guide-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .guide-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background-color: var(--accent-color);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .guide-card:hover::before {
+            opacity: 1;
+        }
+
+        .guide-icon {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+
+        .guide-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .guide-card p {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .guide-link {
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Equipment Showcase */
+        .equipment-section {
+            background-color: #15151a;
+        }
+
+        .equip-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .equip-item {
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+        }
+
+        .equip-item:hover {
+            transform: scale(1.02);
+        }
+
+        .equip-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            filter: grayscale(80%);
+            transition: var(--transition);
+        }
+
+        .equip-item:hover .equip-img {
+            filter: grayscale(0%);
+        }
+
+        .equip-info {
+            padding: 20px;
+        }
+
+        .equip-rarity {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            display: inline-block;
+        }
+
+        .rarity-legendary { color: #ffd700; }
+        .rarity-epic { color: #a335ee; }
+        .rarity-rare { color: #0070dd; }
+
+        .equip-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .equip-stats {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius);
+            margin-bottom: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .faq-question:hover {
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 20px;
+            color: var(--text-dim);
+            font-size: 0.95rem;
+        }
+
+        .faq-item.active .faq-answer {
+            padding-bottom: 20px;
+            max-height: 200px;
+        }
+
+        .faq-item.active .faq-question {
+            color: var(--accent-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            padding: 50px 0 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.9rem;
+            color: var(--text-dim);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h4 {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .footer-col h5 {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-container nav {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--bg-card);
+                flex-direction: column;
+                padding: 20px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .nav-container nav.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .equip-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                暗影猎手 <span>ArchHunter</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Toggle navigation">☰</button>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#guides">狩猎指南</a></li>
+                    <li><a href="#equipment">装备图鉴</a></li>
+                    <li><a href="#community">公会论坛</a></li>
+                    <li><a href="#about">关于我们</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>潜入黑暗，主宰阴影</h1>
+                <p>专为暗影猎手打造的终极行动指南。掌握隐匿技巧、精通高阶武器，在黑暗中成为无人能及的传说。</p>
+                <a href="#guides" class="cta-btn">开始狩猎</a>
+            </div>
+        </section>
+
+        <!-- Stats Bar -->
+        <div class="stats-bar">
+            <div class="container stats-grid">
+                <div class="stat-item">
+                    <h3>500+</h3>
+                    <p>实战案例</p>
+                </div>
+                <div class="stat-item">
+                    <h3>120+</h3>
+                    <p>稀有装备</p>
+                </div>
+                <div class="stat-item">
+                    <h3>98%</h3>
+                    <p>通关率提升</p>
+                </div>
+                <div class="stat-item">
+                    <h3>24h</h3>
+                    <p>实时更新</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Guides Section -->
+        <section id="guides" class="section-padding">
+            <div class="container">
+                <div class="section-title">
+                    <h2>核心狩猎指南</h2>
+                    <div class="divider"></div>
+                </div>
+                <div class="guide-grid">
+                    <article class="guide-card">
+                        <div class="guide-icon">👁️</div>
+                        <h3>隐匿与潜行机制</h3>
+                        <p>深入解析潜行状态下的视野机制与移动判定。掌握如何在敌人的警戒范围内无声移动，以及利用环境光进行完美的视觉欺骗。</p>
+                        <a href="#" class="guide-link">阅读全文 &rarr;</a>
+                    </article>
+                    <article class="guide-card">
+                        <div class="guide-icon">⚔️</div>
+                        <h3>暗影武器精通</h3>
+                        <p>从匕首的爆发刺杀到双刀的连击流，详细分析各类暗影武器的攻速、伤害与冷却时间。构建最适合你战斗风格的武器组合。</p>
+                        <a href="#" class="guide-link">阅读全文 &rarr;</a>
+                    </article>
+                    <article class="guide-card">
+                        <div class="guide-icon">🧪</div>
+                        <h3>毒药与陷阱配置</h3>
+                        <p>如何高效配置毒药药剂以延长流血效果？陷阱布置的黄金角度与触发范围，让敌人陷入绝境的完美布局方案。</p>
+                        <a href="#" class="guide-link">阅读全文 &rarr;</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Equipment Section -->
+        <section id="equipment" class="section-padding equipment-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>传说级装备图鉴</h2>
+                    <div class="divider"></div>
+                </div>
+                <div class="equip-grid">
+                    <div class="equip-item">
+                        <img src="https://picsum.photos/seed/dagger/400/300" alt="影牙匕首" class="equip-img">
+                        <div class="equip-info">
+                            <span class="equip-rarity rarity-legendary">传说</span>
+                            <h3>影牙 · 终焉</h3>
+                            <p style="font-size: 0.85rem; color: #bbb;">攻击速度 +25%，暴击率 +15%。挥动时伴随暗影残影。</p>
+                            <div class="equip-stats">
+                                <span>攻击力: 450</span>
+                                <span>稀有度: ★★★★★</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="equip-item">
+                        <img src="https://picsum.photos/seed/armor/400/300" alt="暗夜斗篷" class="equip-img">
+                        <div class="equip-info">
+                            <span class="equip-rarity rarity-epic">史诗</span>
+                            <h3>夜行者斗篷</h3>
+                            <p style="font-size: 0.85rem; color: #bbb;">提供持续隐身效果，且在移动时不会触发敌人的听觉警报。</p>
+                            <div class="equip-stats">
+                                <span>防御力: 120</span>
+                                <span>稀有度: ★★★★</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="equip-item">
+                        <img src="https://picsum.photos/seed/potion/400/300" alt="虚空药剂" class="equip-img">
+                        <div class="equip-info">
+                            <span class="equip-rarity rarity-rare">稀有</span>
+                            <h3>虚空爆发药剂</h3>
+                            <p style="font-size: 0.85rem; color: #bbb;">瞬间提升30%的暗影伤害，持续10秒。冷却时间：60秒。</p>
+                            <div class="equip-stats">
+                                <span>效果: 爆发</span>
+                                <span>稀有度: ★★★</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="section-padding">
+            <div class="container">
+                <div class="section-title">
+                    <h2>常见问题解答</h2>
+                    <div class="divider"></div>
+                </div>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question">暗影猎手适合新手玩家吗？</div>
+                        <div class="faq-answer">
+                            暗影猎手具有极高的操作上限和生存门槛。对于新手而言，建议先熟悉基础潜行机制，并在低难度副本中练习走位与背刺技巧，逐步掌握高阶玩法。
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">如何快速提升隐匿等级？</div>
+                        <div class="faq-answer">
+                            提升隐匿等级主要通过装备带有潜行加成的饰品、穿戴夜行套装，以及完成特定的潜行挑战任务。保持低姿态移动是基础中的基础。
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">装备获取的主要途径有哪些？</div>
+                        <div class="faq-answer">
+                            主要途径包括通关高难度副本掉落、参与限时世界BOSS活动、以及通过公会贡献兑换稀有材料自行打造。部分传说级装备需完成特定成就解锁。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h4>暗影猎手</h4>
+                    <p>致力于为所有潜伏在阴影中的猎手提供最专业、最详尽的战术支持与装备解析。</p>
+                </div>
+                <div class="footer-col">
+                    <h5>快速链接</h5>
+                    <ul>
+                        <li><a href="#">游戏公告</a></li>
+                        <li><a href="#">版本更新</a></li>
+                        <li><a href="#">活动中心</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>支持服务</h5>
+                    <ul>
+                        <li><a href="#">玩家社区</a></li>
+                        <li><a href="#">客服中心</a></li>
+                        <li><a href="#">问题反馈</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>关注我们</h5>
+                    <ul>
+                        <li><a href="#">官方微博</a></li>
+                        <li><a href="#">微信公众号</a></li>
+                        <li><a href="#">Discord频道</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 暗影猎手官方网站. All rights reserved. 本站为概念展示页面。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu Toggle
+            const mobileBtn = document.querySelector('.mobile-menu-btn');
+            const nav = document.querySelector('nav');
+
+            if (mobileBtn && nav) {
+                mobileBtn.addEventListener('click', () => {
+                    nav.classList.toggle('active');
+                    mobileBtn.innerHTML = nav.classList.contains('active') ? '✕' : '☰';
+                });
+            }
+
+            // FAQ Accordion
+            const faqItems = document.querySelectorAll('.faq-item');
+
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    
+                    // Close all items
+                    faqItems.forEach(i => i.classList.remove('active'));
+                    
+                    // Open clicked item if it wasn't active
+                    if (!isActive) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+
+            // Smooth Scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        // Close mobile menu if open
+                        nav.classList.remove('active');
+                        mobileBtn.innerHTML = '☰';
+                        
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
