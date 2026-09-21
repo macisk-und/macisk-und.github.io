@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="朱迪兔官方资讯与粉丝社区。探索朱迪兔的角色魅力、经典形象、周边商品及粉丝创作分享，了解朱迪兔背后的故事与文化影响。">
+    <meta name="keywords" content="朱迪兔,朱迪,疯狂动物城,兔子,动画角色,官方资讯">
+    <title>朱迪兔-疯狂动物城经典角色与粉丝文化资讯平台</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-blue: #2A9D8F;
+            --primary-dark: #264653;
+            --accent-yellow: #E9C46A;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --bg-light: #F4F9F9;
+            --white: #FFFFFF;
+            --spacing-unit: 16px;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Layout Utilities */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--accent-yellow);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Header & Nav */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--primary-blue);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-dark);
+            position: relative;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-blue);
+        }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -24px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary-blue);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 100%);
+            color: var(--white);
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .hero-text {
+            flex: 1;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            max-width: 500px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-yellow);
+            color: var(--primary-dark);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(233, 196, 106, 0.4);
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Character Profile Grid */
+        .profile-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .profile-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .profile-img {
+            height: 200px;
+            background-color: #ddd;
+            overflow: hidden;
+        }
+
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .profile-card:hover .profile-img img {
+            transform: scale(1.05);
+        }
+
+        .profile-info {
+            padding: 24px;
+        }
+
+        .profile-info h3 {
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+            color: var(--primary-dark);
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 4px 12px;
+            background-color: rgba(42, 157, 143, 0.1);
+            color: var(--primary-blue);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+        }
+
+        .profile-info p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Featured Section (News) */
+        .news-section {
+            background-color: var(--white);
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        .news-main {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .news-item {
+            display: flex;
+            gap: 20px;
+            background: var(--bg-light);
+            padding: 20px;
+            border-radius: 12px;
+            align-items: center;
+        }
+
+        .news-thumb {
+            width: 200px;
+            height: 120px;
+            border-radius: 8px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .news-content h4 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        .news-content h4:hover {
+            color: var(--primary-blue);
+        }
+
+        .news-meta {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 8px;
+        }
+
+        .news-content p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .sidebar {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            padding: 30px;
+            border-radius: 12px;
+            height: fit-content;
+        }
+
+        .sidebar h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding-bottom: 10px;
+        }
+
+        .ranking-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .ranking-number {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--accent-yellow);
+            width: 24px;
+        }
+
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 16px;
+        }
+
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-icon {
+            color: white;
+            font-size: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-dark);
+            color: rgba(255,255,255,0.7);
+            padding: 60px 0 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent-yellow);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-container {
+                position: relative;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            nav {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--white);
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                padding: 20px;
+            }
+
+            nav.open {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .hero-content {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+
+            .hero-text p {
+                margin: 0 auto 30px;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .news-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .news-thumb {
+                width: 100%;
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <span>🐰</span> 朱迪兔
+            </a>
+            <div class="mobile-menu-btn" onclick="toggleMenu()">☰</div>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#home" class="active">首页</a></li>
+                    <li><a href="#profile">角色档案</a></li>
+                    <li><a href="#gallery">精彩图集</a></li>
+                    <li><a href="#news">最新资讯</a></li>
+                    <li><a href="#community">粉丝社区</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <h1>勇敢、智慧与正义的<br>现代兔女郎</h1>
+                    <p>探索朱迪兔（Judy Hopps）这位来自《疯狂动物城》的传奇警官，了解她如何打破偏见，成为动物城史上最杰出的侦探。</p>
+                    <a href="#profile" class="btn btn-primary">探索她的故事</a>
+                </div>
+                <div class="hero-image">
+                    <img src="https://picsum.photos/seed/judyhero/600/400" alt="朱迪兔形象展示">
+                </div>
+            </div>
+        </section>
+
+        <!-- Character Profile Section -->
+        <section id="profile" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>角色档案</h2>
+                    <p>深入了解朱迪兔的性格特点、职业背景与经典语录。</p>
+                </div>
+                
+                <div class="profile-grid">
+                    <article class="profile-card">
+                        <div class="profile-img">
+                            <img src="https://picsum.photos/seed/judy1/400/300" alt="朱迪兔职业形象">
+                        </div>
+                        <div class="profile-info">
+                            <span class="tag">警察</span>
+                            <h3>警官生涯</h3>
+                            <p>朱迪是兔子，但在一个由各种动物组成的城市里，她选择成为一名警官。她毕业于布法罗警校，以优异成绩毕业，并梦想着成为动物城警局的第一只兔子警官。</p>
+                        </div>
+                    </article>
+
+                    <article class="profile-card">
+                        <div class="profile-img">
+                            <img src="https://picsum.photos/seed/judy2/400/300" alt="朱迪兔经典表情">
+                        </div>
+                        <div class="profile-info">
+                            <span class="tag">性格</span>
+                            <h3>乐观与坚韧</h3>
+                            <p>尽管面临体型歧视和质疑，朱迪依然保持着乐观向上的态度。她坚信“每个人都能改变世界”，这种精神深深感染了身边的每一个人。</p>
+                        </div>
+                    </article>
+
+                    <article class="profile-card">
+                        <div class="profile-img">
+                            <img src="https://picsum.photos/seed/judy3/400/300" alt="朱迪兔搭档尼克">
+                        </div>
+                        <div class="profile-info">
+                            <span class="tag">搭档</span>
+                            <h3>尼克·王尔德</h3>
+                            <p>朱迪与狐狸尼克·王尔德结成了完美的搭档。从最初的互相利用到后来的生死之交，两人的关系是电影中最动人的线索之一。</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- News Section -->
+        <section id="news" class="section news-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>最新资讯</h2>
+                    <p>关于朱迪兔的周边动态、同人创作及官方活动。</p>
+                </div>
+                <div class="news-grid">
+                    <div class="news-main">
+                        <article class="news-item">
+                            <img src="https://picsum.photos/seed/judynews1/300/200" alt="新闻配图" class="news-thumb">
+                            <div class="news-content">
+                                <div class="news-meta">2023年10月15日 · 角色回顾</div>
+                                <h4><a href="#">朱迪兔：打破偏见的勇气与梦想</a></h4>
+                                <p>重温经典台词，分析朱迪兔在电影中展现出的领导力与正义感，探讨她如何激励了一代观众。</p>
+                            </div>
+                        </article>
+                        <article class="news-item">
+                            <img src="https://picsum.photos/seed/judynews2/300/200" alt="新闻配图" class="news-thumb">
+                            <div class="news-content">
+                                <div class="news-meta">2023年09月28日 · 周边发售</div>
+                                <h4><a href="#">官方限量版朱迪兔手办发布</a></h4>
+                                <p>迪士尼官方发布了全新的朱迪兔Q版手办，采用高品质PVC材质，还原电影中的经典站姿。</p>
+                            </div>
+                        </article>
+                        <article class="news-item">
+                            <img src="https://picsum.photos/seed/judynews3/300/200" alt="新闻配图" class="news-thumb">
+                            <div class="news-content">
+                                <div class="news-meta">2023年08月10日 · 同人创作</div>
+                                <h4><a href="#">粉丝绘师大赛获奖作品赏析</a></h4>
+                                <p>本年度“疯狂动物城”同人绘画大赛落下帷幕，众多优秀作品展现了朱迪兔不同风格的魅力。</p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <aside class="sidebar">
+                        <h3>热门话题</h3>
+                        <ul class="ranking-list">
+                            <li><span class="ranking-number">1</span> <a href="#">朱迪兔与尼克的CP</a></li>
+                            <li><span class="ranking-number">2</span> <a href="#">朱迪兔的经典台词</a></li>
+                            <li><span class="ranking-number">3</span> <a href="#">朱迪兔的警徽故事</a></li>
+                            <li><span class="ranking-number">4</span> <a href="#">朱迪兔的日常生活</a></li>
+                            <li><span class="ranking-number">5</span> <a href="#">朱迪兔的粉丝图集</a></li>
+                        </ul>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>精彩图集</h2>
+                    <p>收集朱迪兔在不同场景下的精彩瞬间。</p>
+                </div>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="https://picsum.photos/seed/g1/400/400" alt="图集">
+                        <div class="gallery-overlay"><span class="gallery-icon">+</span></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://picsum.photos/seed/g2/400/400" alt="图集">
+                        <div class="gallery-overlay"><span class="gallery-icon">+</span></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://picsum.photos/seed/g3/400/400" alt="图集">
+                        <div class="gallery-overlay"><span class="gallery-icon">+</span></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://picsum.photos/seed/g4/400/400" alt="图集">
+                        <div class="gallery-overlay"><span class="gallery-icon">+</span></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://picsum.photos/seed/g5/400/400" alt="图集">
+                        <div class="gallery-overlay"><span class="gallery-icon">+</span></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://picsum.photos/seed/g6/400/400" alt="图集">
+                        <div class="gallery-overlay"><span class="gallery-icon">+</span></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://picsum.photos/seed/g7/400/400" alt="图集">
+                        <div class="gallery-overlay"><span class="gallery-icon">+</span></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://picsum.photos/seed/g8/400/400" alt="图集">
+                        <div class="gallery-overlay"><span class="gallery-icon">+</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Community Section -->
+        <section id="community" class="section" style="background-color: var(--white);">
+            <div class="container">
+                <div class="section-header">
+                    <h2>加入粉丝社区</h2>
+                    <p>与全球的朱迪兔爱好者一起分享你的热爱。</p>
+                </div>
+                <div style="text-align: center; max-width: 700px; margin: 0 auto;">
+                    <p style="margin-bottom: 30px; font-size: 1.1rem;">
+                        这里是朱迪兔粉丝的聚集地，我们分享同人创作、周边评测以及电影背后的故事。
+                    </p>
+                    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                        <a href="#" class="btn btn-primary" style="background-color: #1DA1F2;">关注微博</a>
+                        <a href="#" class="btn btn-primary" style="background-color: #333;">加入QQ群</a>
+                        <a href="#" class="btn btn-primary" style="background-color: #FF0000;">观看B站视频</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>关于朱迪兔</h4>
+                    <p style="font-size: 0.9rem; line-height: 1.8;">
+                        本站致力于为《疯狂动物城》粉丝提供朱迪兔（Judy Hopps）的角色资讯、图库资源及社区交流平台。
+                        本站为非官方粉丝站点，与迪士尼无任何关联。
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速导航</h4>
+                    <ul>
+                        <li><a href="#home">首页</a></li>
+                        <li><a href="#profile">角色档案</a></li>
+                        <li><a href="#gallery">精彩图集</a></li>
+                        <li><a href="#news">最新资讯</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>友情链接</h4>
+                    <ul>
+                        <li><a href="#">疯狂动物城Wiki</a></li>
+                        <li><a href="#">迪士尼官方</a></li>
+                        <li><a href="#">粉丝创作站</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 朱迪兔粉丝站 版权所有. 本站内容仅供学习交流使用。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById('mainNav');
+            nav.classList.toggle('open');
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    // Close mobile menu if open
+                    document.getElementById('mainNav').classList.remove('open');
+                }
+            });
+        });
+
+        // Active link highlighting on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('nav ul li a').forEach(a => {
+                a.classList.remove('active');
+                if (a.getAttribute('href').includes(current)) {
+                    a.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
