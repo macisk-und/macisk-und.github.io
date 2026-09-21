@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="快手在线平台提供海量短视频内容、直播互动及社交娱乐服务，涵盖搞笑、生活、美食、科技等多个领域，让用户随时随地享受流畅的在线娱乐体验。">
+    <meta name="keywords" content="快手在线,短视频,直播,在线娱乐,快手直播,快手视频">
+    <title>快手在线-海量短视频与直播互动娱乐平台</title>
+    <style>
+        :root {
+            --primary-color: #ff5000;
+            --primary-hover: #ff6b35;
+            --text-main: #171717;
+            --text-secondary: #606060;
+            --bg-body: #f8f8f8;
+            --bg-card: #ffffff;
+            --border-color: #e0e0e0;
+            --spacing-unit: 16px;
+            --container-width: 1200px;
+            --header-height: 64px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-top: var(--header-height);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--header-height);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header-container {
+            width: 100%;
+            max-width: var(--container-width);
+            padding: 0 var(--spacing-unit);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-menu a {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--primary-color);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .btn-login {
+            padding: 8px 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .btn-login:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-primary {
+            padding: 8px 24px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+            padding: 60px 0;
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 16px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .hero p {
+            font-size: 18px;
+            opacity: 0.95;
+            margin-bottom: 32px;
+        }
+
+        .search-bar {
+            background: white;
+            padding: 8px;
+            border-radius: 50px;
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .search-bar input {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 0 20px;
+            font-size: 16px;
+            border-radius: 40px;
+        }
+
+        .search-bar button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        /* Categories */
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title::before {
+            content: '';
+            display: block;
+            width: 4px;
+            height: 24px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .category-item {
+            background: var(--bg-card);
+            padding: 20px 10px;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid transparent;
+            cursor: pointer;
+        }
+
+        .category-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+            border-color: var(--border-color);
+        }
+
+        .category-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .category-name {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* Live Section */
+        .live-section {
+            margin-bottom: 60px;
+        }
+
+        .live-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .video-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: box-shadow 0.2s;
+            cursor: pointer;
+        }
+
+        .video-card:hover {
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .card-image-wrapper {
+            position: relative;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            background-color: #f0f0f0;
+            overflow: hidden;
+        }
+
+        .card-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .live-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .live-dot {
+            width: 6px;
+            height: 6px;
+            background-color: #ff3b30;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.4; }
+            100% { opacity: 1; }
+        }
+
+        .card-content {
+            padding: 16px;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .card-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .author-avatar {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: #ddd;
+        }
+
+        /* Feature Section */
+        .feature-section {
+            background-color: white;
+            padding: 60px 0;
+            margin-bottom: 60px;
+            border-radius: 16px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            text-align: center;
+        }
+
+        .feature-item h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .feature-item p {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a1a1a;
+            color: #b3b3b3;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h2 {
+            color: white;
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            max-width: 300px;
+            line-height: 1.8;
+        }
+
+        .footer-col h4 {
+            color: white;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 30px;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .header-actions .btn-login {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-brand p {
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">
+                <span>快手</span>在线
+            </a>
+            <nav class="nav-menu">
+                <a href="#" class="active">首页</a>
+                <a href="#">直播</a>
+                <a href="#">短视频</a>
+                <a href="#">游戏</a>
+                <a href="#">美食</a>
+            </nav>
+            <div class="header-actions">
+                <a href="#" class="btn-login">登录</a>
+                <a href="#" class="btn-primary">下载APP</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>发现生活的精彩瞬间</h1>
+            <p>连接你我，分享真实有趣的在线世界。无论是搞笑段子、生活技巧还是才艺展示，这里应有尽有。</p>
+            <div class="search-bar">
+                <input type="text" placeholder="搜索你感兴趣的内容...">
+                <button>搜索</button>
+            </div>
+        </div>
+    </section>
+
+    <main class="container">
+        <!-- Categories -->
+        <section class="categories">
+            <h2 class="section-title">热门分类</h2>
+            <div class="category-grid">
+                <div class="category-item">
+                    <span class="category-icon">🎬</span>
+                    <div class="category-name">影视解说</div>
+                </div>
+                <div class="category-item">
+                    <span class="category-icon">🎮</span>
+                    <div class="category-name">游戏直播</div>
+                </div>
+                <div class="category-item">
+                    <span class="category-icon">🍳</span>
+                    <div class="category-name">美食制作</div>
+                </div>
+                <div class="category-item">
+                    <span class="category-icon">🐱</span>
+                    <div class="category-name">萌宠日常</div>
+                </div>
+                <div class="category-item">
+                    <span class="category-icon">✈️</span>
+                    <div class="category-name">旅行攻略</div>
+                </div>
+                <div class="category-item">
+                    <span class="category-icon">💄</span>
+                    <div class="category-name">美妆教程</div>
+                </div>
+                <div class="category-item">
+                    <span class="category-icon">🎵</span>
+                    <div class="category-name">音乐现场</div>
+                </div>
+                <div class="category-item">
+                    <span class="category-icon">🛒</span>
+                    <div class="category-name">好物推荐</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Live Streaming -->
+        <section class="live-section">
+            <h2 class="section-title">正在直播</h2>
+            <div class="live-grid">
+                <article class="video-card">
+                    <div class="card-image-wrapper">
+                        <img src="https://picsum.photos/seed/live1/400/225" alt="户外直播" class="card-image">
+                        <div class="live-badge"><span class="live-dot"></span> 直播中</div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">深夜探店：这家藏在巷子里的火锅店真的太好吃了！</h3>
+                        <div class="card-info">
+                            <div class="author-info">
+                                <img src="https://picsum.photos/seed/avatar1/50/50" alt="主播头像" class="author-avatar">
+                                <span>吃货小分队</span>
+                            </div>
+                            <span>12.5万观看</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="video-card">
+                    <div class="card-image-wrapper">
+                        <img src="https://picsum.photos/seed/live2/400/225" alt="游戏直播" class="card-image">
+                        <div class="live-badge"><span class="live-dot"></span> 直播中</div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">王者荣耀：巅峰赛2000分王者教学，带你上分！</h3>
+                        <div class="card-info">
+                            <div class="author-info">
+                                <img src="https://picsum.photos/seed/avatar2/50/50" alt="主播头像" class="author-avatar">
+                                <span>电竞阿杰</span>
+                            </div>
+                            <span>8.2万观看</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="video-card">
+                    <div class="card-image-wrapper">
+                        <img src="https://picsum.photos/seed/live3/400/225" alt="才艺直播" class="card-image">
+                        <div class="live-badge"><span class="live-dot"></span> 直播中</div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">吉他弹唱现场，一首《晴天》送给今晚的你</h3>
+                        <div class="card-info">
+                            <div class="author-info">
+                                <img src="https://picsum.photos/seed/avatar3/50/50" alt="主播头像" class="author-avatar">
+                                <span>音乐老张</span>
+                            </div>
+                            <span>5.6万观看</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="video-card">
+                    <div class="card-image-wrapper">
+                        <img src="https://picsum.photos/seed/live4/400/225" alt="户外直播" class="card-image">
+                        <div class="live-badge"><span class="live-dot"></span> 直播中</div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">极限运动挑战：高空跳伞第一视角体验</h3>
+                        <div class="card-info">
+                            <div class="author-info">
+                                <img src="https://picsum.photos/seed/avatar4/50/50" alt="主播头像" class="author-avatar">
+                                <span>冒险者联盟</span>
+                            </div>
+                            <span>20.1万观看</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section class="feature-section">
+            <h2 class="section-title">为什么选择快手在线</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <div style="font-size: 40px; margin-bottom: 15px;">🚀</div>
+                    <h3>极速播放</h3>
+                    <p>采用先进的流媒体技术，确保在任何网络环境下都能获得流畅的视频观看体验。</p>
+                </div>
+                <div class="feature-item">
+                    <div style="font-size: 40px; margin-bottom: 15px;">🌍</div>
+                    <h3>多元内容</h3>
+                    <p>覆盖搞笑、生活、知识、科技等多个领域，满足不同用户的个性化内容需求。</p>
+                </div>
+                <div class="feature-item">
+                    <div style="font-size: 40px; margin-bottom: 15px;">💬</div>
+                    <h3>实时互动</h3>
+                    <p>丰富的弹幕评论和礼物互动功能，让用户与主播和粉丝之间距离更近。</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h2>快手在线</h2>
+                    <p>快手在线致力于为用户提供最优质的短视频和直播内容，打造真实、有趣、有温度的在线娱乐社区。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>关于我们</h4>
+                    <ul>
+                        <li><a href="#">公司简介</a></li>
+                        <li><a href="#">管理团队</a></li>
+                        <li><a href="#">加入我们</a></li>
+                        <li><a href="#">联系方式</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>帮助中心</h4>
+                    <ul>
+                        <li><a href="#">用户协议</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">内容规范</a></li>
+                        <li><a href="#">侵权投诉</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>关注我们</h4>
+                    <ul>
+                        <li><a href="#">新浪微博</a></li>
+                        <li><a href="#">微信公众号</a></li>
+                        <li><a href="#">官方邮箱</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 快手在线平台 版权所有</p>
+            </div>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</body>
+</html>
