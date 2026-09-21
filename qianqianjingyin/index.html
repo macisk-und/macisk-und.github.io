@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="千千静音 - 经典免费音乐播放器软件，支持在线歌词显示、均衡器调节、歌词搜索与下载，提供纯净、稳定的本地音乐播放解决方案。">
+    <meta name="keywords" content="千千静音,免费音乐播放器,在线歌词,本地音乐播放,音频播放软件,MP3播放器">
+    <title>千千静音 - 经典免费音乐播放器与在线歌词解决方案</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #e74c3c;
+            --secondary-color: #2c3e50;
+            --accent-color: #3498db;
+            --bg-color: #f5f7fa;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-light: #7f8c8d;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-main);
+            font-size: 16px;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .btn-outline {
+            border: 1px solid var(--secondary-color);
+            color: var(--secondary-color);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: var(--secondary-color);
+            color: #fff;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: #c0392b;
+            transform: translateY(-1px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%);
+            color: #fff;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 20px;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-features {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .feature-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feature-icon {
+            font-size: 32px;
+        }
+
+        /* Main Content */
+        main {
+            flex: 1;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 60px 20px;
+            width: 100%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+        }
+
+        /* Function Grid */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(231, 76, 60, 0.1);
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+
+        .card p {
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        /* Comparison Table */
+        .comparison-wrapper {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            margin-bottom: 60px;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .comparison-table th, .comparison-table td {
+            padding: 20px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .comparison-table th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+            color: var(--secondary-color);
+            width: 30%;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table tr:hover {
+            background-color: #fafafa;
+        }
+
+        .check-icon { color: #27ae60; margin-right: 5px; }
+        .cross-icon { color: #e74c3c; margin-right: 5px; }
+
+        /* Download Section */
+        .download-section {
+            background-color: var(--secondary-color);
+            color: #fff;
+            border-radius: var(--border-radius);
+            padding: 60px 40px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .download-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .download-section p {
+            margin-bottom: 30px;
+            opacity: 0.8;
+            max-width: 600px;
+        }
+
+        .version-list {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .version-tag {
+            background: rgba(255,255,255,0.1);
+            padding: 5px 15px;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .version-tag:hover, .version-tag.active {
+            border-color: #fff;
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #fff;
+            padding: 60px 20px 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .footer-content {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                height: auto;
+                padding: 15px;
+            }
+            
+            nav ul {
+                margin: 15px 0;
+                gap: 15px;
+                font-size: 14px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .comparison-table th, .comparison-table td {
+                padding: 15px 10px;
+            }
+            
+            .comparison-table th {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-inner">
+        <a href="#" class="logo">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--primary-color)"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+            千千静音<span>音乐</span>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="#" class="active">首页</a></li>
+                <li><a href="#features">功能特性</a></li>
+                <li><a href="#comparison">软件对比</a></li>
+                <li><a href="#faq">常见问题</a></li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+            <a href="#download" class="btn btn-outline">使用帮助</a>
+            <a href="#download" class="btn btn-primary">立即下载</a>
+        </div>
+    </div>
+</header>
+
+<section class="hero">
+    <h1>经典免费音乐播放器</h1>
+    <p>千千静音致力于为您提供纯净、高效、无广告的本地音乐播放体验。支持在线歌词、歌词搜索、均衡器调节，让您的听歌体验更上一层楼。</p>
+    <div style="display:flex; justify-content:center; gap:15px;">
+        <a href="#download" class="btn btn-primary" style="background:#fff; color:var(--primary-color);">下载最新版</a>
+        <a href="#features" class="btn btn-outline" style="border-color:#fff; color:#fff;">了解更多</a>
+    </div>
+    <div class="hero-features">
+        <div class="feature-item">
+            <div class="feature-icon">🎵</div>
+            <span>在线歌词</span>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">🎧</div>
+            <span>专业均衡器</span>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">🔒</div>
+            <span>纯净无广告</span>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">💾</div>
+            <span>本地管理</span>
+        </div>
+    </div>
+</section>
+
+<main>
+    <section id="features">
+        <div class="section-title">
+            <h2>核心功能介绍</h2>
+            <p>专为音乐爱好者打造的多功能播放解决方案</p>
+        </div>
+        <div class="grid-container">
+            <article class="card">
+                <div class="card-icon">🎤</div>
+                <h3>在线歌词同步</h3>
+                <p>无需手动搜索，自动匹配网络歌词。支持多种歌词格式，实时滚动显示，让您的K歌体验更专业。</p>
+            </article>
+            <article class="card">
+                <div class="card-icon">🎚️</div>
+                <h3>专业均衡器</h3>
+                <p>内置10段均衡器，支持预设调节（流行、古典、摇滚等），支持自定义频率调节，还原最真实的音质。</p>
+            </article>
+            <article class="card">
+                <div class="card-icon">🔍</div>
+                <h3>智能歌词搜索</h3>
+                <p>强大的歌词库支持，即使没有歌词文件也能一键搜索下载，自动保存至本地播放列表。</p>
+            </article>
+            <article class="card">
+                <div class="card-icon">🔄</div>
+                <h3>列表循环模式</h3>
+                <p>支持单曲循环、列表循环、随机播放等多种模式，满足您不同的听觉需求，拒绝单调。</p>
+            </article>
+            <article class="card">
+                <div class="card-icon">📱</div>
+                <h3>多端数据同步</h3>
+                <p>支持云端同步播放列表，无论是在电脑还是手机，您的音乐偏好和歌单都能随时访问。</p>
+            </article>
+            <article class="card">
+                <div class="card-icon">🛡️</div>
+                <h3>安全纯净</h3>
+                <p>源代码开源透明，无任何捆绑软件或广告插件，保障您的设备安全与隐私。</p>
+            </article>
+        </div>
+    </section>
+
+    <section id="comparison">
+        <div class="section-title">
+            <h2>为什么选择千千静音</h2>
+            <p>与传统播放器及流媒体服务的对比分析</p>
+        </div>
+        <div class="comparison-wrapper">
+            <table class="comparison-table">
+                <tbody>
+                    <tr>
+                        <th>功能对比</th>
+                        <td><strong>千千静音</strong></td>
+                        <td><strong>传统播放器</strong></td>
+                        <td><strong>在线音乐APP</strong></td>
+                    </tr>
+                    <tr>
+                        <td>本地文件管理</td>
+                        <td><span class="check-icon">✔</span> 强大的本地库管理</td>
+                        <td><span class="check-icon">✔</span> 基本播放</td>
+                        <td><span class="cross-icon">✖</span> 依赖网络加载</td>
+                    </tr>
+                    <tr>
+                        <td>歌词功能</td>
+                        <td><span class="check-icon">✔</span> 在线搜索+本地缓存</td>
+                        <td><span class="cross-icon">✖</span> 需手动导入</td>
+                        <td><span class="check-icon">✔</span> 依赖版权方</td>
+                    </tr>
+                    <tr>
+                        <td>广告干扰</td>
+                        <td><span class="check-icon">✔</span> 纯净无广告</td>
+                        <td><span class="cross-icon">✖</span> 常见弹窗广告</td>
+                        <td><span class="cross-icon">✖</span> 开屏/视频广告</td>
+                    </tr>
+                    <tr>
+                        <td>版权限制</td>
+                        <td><span class="check-icon">✔</span> 无版权限制（本地文件）</td>
+                        <td><span class="check-icon">✔</span> 无版权限制</td>
+                        <td><span class="cross-icon">✖</span> 部分歌曲无法播放</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="faq">
+        <div class="section-title">
+            <h2>常见问题 (FAQ)</h2>
+            <p>关于软件安装与使用的常见疑问解答</p>
+        </div>
+        <div class="grid-container">
+            <div class="card">
+                <h3>Q: 千千静音支持哪些音频格式？</h3>
+                <p>A: 软件支持主流音频格式，包括 MP3、WMA、WAV、OGG、FLAC、APE、AAC 等无损及有损格式。</p>
+            </div>
+            <div class="card">
+                <h3>Q: 如何开启在线歌词功能？</h3>
+                <p>A: 在播放列表中选中歌曲，点击歌词栏或右键选择“在线歌词”，系统将自动连接歌词服务器搜索。</p>
+            </div>
+            <div class="card">
+                <h3>Q: 下载后安装有捆绑软件吗？</h3>
+                <p>A: 千千静音承诺安装包纯净，无任何第三方捆绑软件或流氓插件，请放心下载使用。</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="download" class="download-section">
+        <h2>立即开始您的音乐之旅</h2>
+        <p>免费下载千千静音，释放您本地音乐库的潜能，享受纯净的听觉盛宴。</p>
+        <div class="version-list">
+            <div class="version-tag active">最新稳定版</div>
+            <div class="version-tag">历史版本</div>
+        </div>
+        <button class="btn btn-primary" style="background: #fff; color: var(--primary-color); font-size: 18px; padding: 12px 40px;">下载 Windows 版</button>
+        <p style="margin-top: 15px; font-size: 12px; opacity: 0.6;">支持 Windows 10 / 11 64位系统</p>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-col">
+            <h4>关于我们</h4>
+            <p style="color:var(--text-light); font-size:14px; line-height:1.8;">
+                千千静音致力于开发最优秀的开源音频播放软件，让技术回归本质，让用户拥有完全掌控权。
+            </p>
+        </div>
+        <div class="footer-col">
+            <h4>功能导航</h4>
+            <ul>
+                <li><a href="#">在线歌词</a></li>
+                <li><a href="#">均衡器设置</a></li>
+                <li><a href="#">歌词下载</a></li>
+                <li><a href="#">播放列表管理</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>支持与帮助</h4>
+            <ul>
+                <li><a href="#">使用教程</a></li>
+                <li><a href="#">常见问题</a></li>
+                <li><a href="#">意见反馈</a></li>
+                <li><a href="#">联系客服</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>关注我们</h4>
+            <ul>
+                <li><a href="#">微信公众号</a></li>
+                <li><a href="#">官方论坛</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="copyright">
+        &copy; 2023 千千静音音乐播放器. All rights reserved. 保留所有权利.
+    </div>
+</footer>
+
+</body>
+</html>
