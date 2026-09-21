@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="韩服LOL全攻略：包含韩服登录方法、网络环境配置、符文天赋搭配、韩服英雄出装推荐及最新版本环境分析。提供最专业的韩服上分指南与游戏资讯。">
+    <meta name="keywords" content="韩服lol, 韩服LOL, 英雄联盟韩服, 韩服登录, 韩服上分, 英雄联盟国服外服切换">
+    <title>韩服lol-专业韩服英雄联盟环境配置与上分指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --lol-blue: #0ac8b9;
+            --lol-dark: #232323;
+            --lol-light: #f0f2f5;
+            --lol-gold: #c89b3c;
+            --text-main: #333;
+            --text-sub: #666;
+            --spacing: 20px;
+            --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--lol-light);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Header & Nav */
+        header {
+            background-color: var(--lol-dark);
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing);
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--lol-blue);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            color: white;
+            font-weight: 500;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0f2027 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 2px solid var(--lol-blue);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #ddd;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--lol-blue);
+            color: #000;
+            padding: 12px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .cta-button:hover {
+            background-color: #08a39b;
+            transform: translateY(-2px);
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            .nav-container {
+                flex-direction: column;
+                height: auto;
+                padding: 10px;
+                gap: 10px;
+            }
+            nav ul {
+                font-size: 0.85rem;
+                gap: 10px;
+            }
+        }
+
+        /* Main Content */
+        section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            border-left: 5px solid var(--lol-blue);
+            padding-left: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .section-title a {
+            font-size: 0.9rem;
+            color: var(--text-sub);
+            font-weight: normal;
+        }
+
+        /* Article Cards */
+        .article-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .article-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            display: flex;
+            transition: transform 0.2s;
+        }
+
+        .article-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .article-thumb {
+            width: 240px;
+            height: 160px;
+            background-color: #eee;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .article-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .article-meta {
+            font-size: 0.8rem;
+            color: #999;
+            margin-bottom: 8px;
+        }
+
+        .article-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #222;
+        }
+
+        .article-title a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .article-title a:hover {
+            color: var(--lol-blue);
+        }
+
+        .article-excerpt {
+            font-size: 0.95rem;
+            color: var(--text-sub);
+            margin-bottom: 15px;
+        }
+
+        .read-more {
+            color: var(--lol-blue);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            align-self: flex-start;
+        }
+
+        /* Guide Grid */
+        .guide-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .guide-item {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s;
+            cursor: pointer;
+            border-top: 3px solid transparent;
+        }
+
+        .guide-item:hover {
+            border-top-color: var(--lol-blue);
+            transform: translateY(-5px);
+        }
+
+        .guide-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .guide-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        /* Sidebar */
+        aside {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .widget {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .widget-title {
+            font-size: 1.1rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .rank-list {
+            list-style: none;
+        }
+
+        .rank-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #f5f5f5;
+        }
+
+        .rank-num {
+            width: 25px;
+            font-weight: bold;
+            color: var(--lol-blue);
+            margin-right: 10px;
+        }
+
+        .rank-item:nth-child(1) .rank-num { color: #ffcc00; }
+        .rank-item:nth-child(2) .rank-num { color: #b8b8b8; }
+        .rank-item:nth-child(3) .rank-num { color: #cd7f32; }
+
+        .rank-name {
+            flex-grow: 1;
+            font-size: 0.95rem;
+        }
+
+        .rank-winrate {
+            font-size: 0.85rem;
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        /* FAQ */
+        .faq-item {
+            background: white;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .faq-question {
+            padding: 15px 20px;
+            background: #fafafa;
+            cursor: pointer;
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question:hover {
+            background: #f0f0f0;
+        }
+
+        .faq-answer {
+            padding: 0 20px 15px;
+            color: var(--text-sub);
+            font-size: 0.95rem;
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question {
+            color: var(--lol-blue);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--lol-dark);
+            color: #888;
+            padding: 40px 20px;
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .footer-links {
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            color: #888;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .copyright {
+            font-size: 0.85rem;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span style="font-size:1.5rem;">⚔️</span> 韩服LOL攻略站
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#">登录教程</a></li>
+                    <li><a href="#">符文天赋</a></li>
+                    <li><a href="#">出装推荐</a></li>
+                    <li><a href="#">版本资讯</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>掌握韩服LOL环境，冲击最强王者</h1>
+            <p>为您提供最权威的韩服登录方式、网络优化建议、版本强势英雄分析及职业选手出装思路。助您在韩服排位赛中占据优势。</p>
+            <a href="#guide" class="cta-button">开始上分之旅</a>
+        </section>
+
+        <div class="container">
+            <div class="content">
+                <!-- Quick Guide -->
+                <section id="guide">
+                    <div class="section-title">
+                        <h2>韩服LOL快速指南</h2>
+                    </div>
+                    <div class="guide-grid">
+                        <div class="guide-item">
+                            <span class="guide-icon">🌐</span>
+                            <div class="guide-title">网络环境配置</div>
+                            <div style="font-size:0.85rem; color:#666;">VPN节点选择与延迟优化</div>
+                        </div>
+                        <div class="guide-item">
+                            <span class="guide-icon">🔑</span>
+                            <div class="guide-title">账号注册与登录</div>
+                            <div style="font-size:0.85rem; color:#666;">Riot ID绑定与安全验证</div>
+                        </div>
+                        <div class="guide-item">
+                            <span class="guide-icon">🧬</span>
+                            <div class="guide-title">符文天赋定制</div>
+                            <div style="font-size:0.85rem; color:#666;">符文页管理与高级设置</div>
+                        </div>
+                        <div class="guide-item">
+                            <span class="guide-icon">🛡️</span>
+                            <div class="guide-title">防封号机制</div>
+                            <div style="font-size:0.85rem; color:#666;">账号安全与异常检测应对</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Latest News -->
+                <section>
+                    <div class="section-title">
+                        <h2>韩服LOL最新资讯</h2>
+                        <a href="#">查看更多 &raquo;</a>
+                    </div>
+                    <div class="article-list">
+                        <article class="article-card">
+                            <img src="https://picsum.photos/seed/lol1/240/160" alt="韩服版本更新" class="article-thumb">
+                            <div class="article-content">
+                                <div class="article-meta">2023-10-25 · 版本更新</div>
+                                <h3 class="article-title"><a href="#">S13赛季韩服大乱斗符文改动解析</a></h3>
+                                <p class="article-excerpt">随着版本更新，大乱斗模式中的符文系统迎来调整，征服者回归，新增符文效果详解及适配英雄推荐...</p>
+                                <a href="#" class="read-more">阅读全文</a>
+                            </div>
+                        </article>
+
+                        <article class="article-card">
+                            <img src="https://picsum.photos/seed/lol2/240/160" alt="韩服上分技巧" class="article-thumb">
+                            <div class="article-content">
+                                <div class="article-meta">2023-10-22 · 上分技巧</div>
+                                <h3 class="article-title"><a href="#">韩服路人局胜率TOP5打野英雄推荐</a></h3>
+                                <p class="article-excerpt">针对韩服当前节奏较快的环境，为您分析目前版本胜率最高的打野英雄，包括出装思路与刷野路线...</p>
+                                <a href="#" class="read-more">阅读全文</a>
+                            </div>
+                        </article>
+
+                        <article class="article-card">
+                            <img src="https://picsum.photos/seed/lol3/240/160" alt="韩服排位环境" class="article-thumb">
+                            <div class="article-content">
+                                <div class="article-meta">2023-10-18 · 排位环境</div>
+                                <h3 class="article-title"><a href="#">韩服单排上分心态建设与BP策略</a></h3>
+                                <p class="article-excerpt">在韩服单排中，心态管理至关重要。本文将分享职业选手常用的BP策略，以及如何应对逆风局...</p>
+                                <a href="#" class="read-more">阅读全文</a>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+
+                <!-- FAQ Section -->
+                <section>
+                    <div class="section-title">
+                        <h2>常见问题 (FAQ)</h2>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">如何注册并登录韩服LOL账号？</div>
+                        <div class="faq-answer">首先需要准备一个有效的韩区邮箱（如Naver或Daum邮箱），在Riot官网选择韩国区进行注册。注册成功后，下载韩服客户端，使用Riot ID登录即可。</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">玩韩服LOL延迟高怎么办？</div>
+                        <div class="faq-answer">建议使用稳定的加速器连接韩国节点。同时，确保本地网络环境稳定，关闭其他占用带宽的程序。如果延迟超过100ms，建议重新连接节点。</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">韩服LOL可以和美服、欧服玩家一起玩吗？</div>
+                        <div class="faq-answer">不可以。LOL目前不支持跨服组队，您必须选择服务器所在的地区进行游戏。如果您想和海外朋友一起玩，需要创建一个跨服好友组队房间（需特定版本支持）。</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">韩服LOL的符文天赋和国服一样吗？</div>
+                        <div class="faq-answer">大部分符文天赋是一样的，但韩服通常会提前更新一些特殊符文或调整部分数值。建议定期查看官方补丁说明，以获取最新的符文搭配建议。</div>
+                    </div>
+                </section>
+            </div>
+
+            <aside>
+                <!-- Hot Champions -->
+                <div class="widget">
+                    <h3 class="widget-title">韩服热门英雄</h3>
+                    <ul class="rank-list">
+                        <li class="rank-item">
+                            <span class="rank-num">1</span>
+                            <span class="rank-name">阿狸</span>
+                            <span class="rank-winrate">52.4%</span>
+                        </li>
+                        <li class="rank-item">
+                            <span class="rank-num">2</span>
+                            <span class="rank-name">李青</span>
+                            <span class="rank-winrate">51.8%</span>
+                        </li>
+                        <li class="rank-item">
+                            <span class="rank-num">3</span>
+                            <span class="rank-name">厄斐琉斯</span>
+                            <span class="rank-winrate">51.5%</span>
+                        </li>
+                        <li class="rank-item">
+                            <span class="rank-num">4</span>
+                            <span class="rank-name">金克丝</span>
+                            <span class="rank-winrate">51.2%</span>
+                        </li>
+                        <li class="rank-item">
+                            <span class="rank-num">5</span>
+                            <span class="rank-name">永恩</span>
+                            <span class="rank-winrate">50.9%</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Tools -->
+                <div class="widget">
+                    <h3 class="widget-title">实用工具</h3>
+                    <ul class="rank-list">
+                        <li class="rank-item">
+                            <a href="#" style="text-decoration:none; color:#333;">韩服战绩查询</a>
+                        </li>
+                        <li class="rank-item">
+                            <a href="#" style="text-decoration:none; color:#333;">符文生成器</a>
+                        </li>
+                        <li class="rank-item">
+                            <a href="#" style="text-decoration:none; color:#333;">装备价格表</a>
+                        </li>
+                        <li class="rank-item">
+                            <a href="#" style="text-decoration:none; color:#333;">皮肤展示</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Ad Placeholder -->
+                <div class="widget" style="background:#eee; display:flex; align-items:center; justify-content:center; color:#999;">
+                    广告位
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#">关于我们</a>
+            <a href="#">免责声明</a>
+            <a href="#">联系方式</a>
+            <a href="#">网站地图</a>
+        </div>
+        <p class="copyright">© 2023 韩服LOL攻略站. All Rights Reserved.</p>
+        <p style="font-size:0.8rem; margin-top:10px; color:#555;">本站内容仅供学习交流使用，非官方网站。游戏版权属于Riot Games。</p>
+    </footer>
+
+    <script>
+        // Simple FAQ Toggle Logic
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', event => {
+                const parent = item.parentElement;
+                parent.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
